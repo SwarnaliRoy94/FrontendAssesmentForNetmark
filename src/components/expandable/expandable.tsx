@@ -1,0 +1,78 @@
+"use client";
+
+import { ReactNode, useState, Children } from "react";
+import styles from "./expandable.module.css";
+
+enum childrenType {
+  HEADER = "Header",
+  ICON = "Icon",
+  BODY = "Body",
+}
+
+interface ExpandableProps {
+  children: ReactNode;
+}
+interface ExpandableIconProps {
+  icon: ReactNode;
+}
+
+interface ExpandableHeaderProps {
+  children: ReactNode;
+}
+
+interface ExpandableBodyProps {
+  children: ReactNode;
+}
+
+const Expandable = ({ children }: ExpandableProps) => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const toggle = () => {
+    setIsOpen((prev) => !prev);
+  };
+
+  const childrenArray = Children.toArray(children);
+
+  const header = childrenArray.find(
+    (child: any) => child.type.name === childrenType.HEADER
+  );
+
+  const icon = childrenArray.find(
+    (child: any) => child.type.name === childrenType.ICON
+  );
+
+  const body = childrenArray.find(
+    (child: any) => child.type.name === childrenType.BODY
+  );
+
+  return (
+    <div className={styles.wrapper}>
+      <div className={styles.headerStyle} onClick={toggle}>
+        <div>{header?.props.children}</div>
+        <div>{isOpen ? "-" : icon?.props.icon}</div>
+      </div>
+      {isOpen && (
+        <div className={styles.bodyStyle}>
+          <div>{body?.props.children}</div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+const Icon = ({ icon }: ExpandableIconProps) => {
+  return <div>{icon}</div>;
+};
+Expandable.Icon = Icon;
+
+const Header = ({ children }: ExpandableHeaderProps) => {
+  return <div>{children}</div>;
+};
+Expandable.Header = Header;
+
+const Body = ({ children }: ExpandableBodyProps) => {
+  return <div>{children}</div>;
+};
+Expandable.Body = Body;
+
+export default Expandable;
