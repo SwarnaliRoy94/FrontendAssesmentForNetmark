@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode, useState, Children } from "react";
+import { ReactNode, useState, Children, ReactElement } from "react";
 import styles from "./expandable.module.css";
 
 enum childrenType {
@@ -11,6 +11,8 @@ enum childrenType {
 
 interface ExpandableProps {
   children: ReactNode;
+  isOpen: boolean;
+  updateItemId: () => void;
 }
 interface ExpandableIconProps {
   icon: ReactNode;
@@ -24,11 +26,9 @@ interface ExpandableBodyProps {
   children: ReactNode;
 }
 
-const Expandable = ({ children }: ExpandableProps) => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-
+const Expandable = ({ children, isOpen, updateItemId }: ExpandableProps) => {
   const toggle = () => {
-    setIsOpen((prev) => !prev);
+    updateItemId();
   };
 
   const childrenArray = Children.toArray(children);
