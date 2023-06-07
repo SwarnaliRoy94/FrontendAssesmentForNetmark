@@ -3,6 +3,7 @@
 import Expandable from "@/components/expandable/expandable";
 import styles from "./page.module.css";
 import { useState } from "react";
+import { FaChevronCircleDown } from "react-icons/fa";
 
 const faqItems = [
   {
@@ -71,7 +72,6 @@ export default function Home() {
   const [isOpenItemId, setIsOpenItemId] = useState<number>(-1);
 
   const updateOpenedItemId = (id: number) => {
-    
     // when an opened item is clicked it will set -1 to close the item.
     setIsOpenItemId((prev) => (id === prev ? -1 : id));
   };
@@ -79,6 +79,7 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <div className={styles.wrapper}>
+        <div className={styles.heading}> Frequently Asked Questions </div>
         {faqItems.map((item) => (
           <div key={item.id} className={styles.expandable}>
             <Expandable
@@ -86,7 +87,7 @@ export default function Home() {
               updateItemId={() => updateOpenedItemId(item.id)}
             >
               <Expandable.Header>{item.header}</Expandable.Header>
-              <Expandable.Icon icon={"+"} />
+              <Expandable.Icon icon={<FaChevronCircleDown color="grey" />} />
               <Expandable.Body>{item.content}</Expandable.Body>
             </Expandable>
           </div>
