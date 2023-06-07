@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode, useState, Children, ReactElement } from "react";
+import { ReactNode, Children } from "react";
 import styles from "./expandable.module.css";
 import { FaChevronCircleUp } from "react-icons/fa";
 
@@ -50,8 +50,9 @@ const Expandable = ({ children, isOpen, updateItemId }: ExpandableProps) => {
     <div className={styles.wrapper}>
       <div className={styles.headerStyle} onClick={toggle}>
         <div>{header?.props.children}</div>
-        <div>{isOpen ? <FaChevronCircleUp color="grey"  /> : icon?.props.icon}</div>
-      
+        <div>
+          {isOpen ? <FaChevronCircleUp color="grey" /> : icon?.props.icon}
+        </div>
       </div>
       {isOpen && (
         <div className={styles.bodyStyle}>
