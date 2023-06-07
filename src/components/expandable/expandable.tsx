@@ -2,6 +2,7 @@
 
 import { ReactNode, useState, Children, ReactElement } from "react";
 import styles from "./expandable.module.css";
+import { FaChevronCircleUp } from "react-icons/fa";
 
 enum childrenType {
   HEADER = "Header",
@@ -15,7 +16,7 @@ interface ExpandableProps {
   updateItemId: () => void;
 }
 interface ExpandableIconProps {
-  icon: ReactNode;
+  icon: any;
 }
 
 interface ExpandableHeaderProps {
@@ -49,7 +50,8 @@ const Expandable = ({ children, isOpen, updateItemId }: ExpandableProps) => {
     <div className={styles.wrapper}>
       <div className={styles.headerStyle} onClick={toggle}>
         <div>{header?.props.children}</div>
-        <div>{isOpen ? "-" : icon?.props.icon}</div>
+        <div>{isOpen ? <FaChevronCircleUp color="grey"  /> : icon?.props.icon}</div>
+      
       </div>
       {isOpen && (
         <div className={styles.bodyStyle}>
