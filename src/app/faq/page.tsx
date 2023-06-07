@@ -70,6 +70,7 @@ export const faqItems = [
 
 export default function Home() {
   const [isOpenItemId, setIsOpenItemId] = useState<number>(-1);
+  const [faqs, setFaqs] = useState(faqItems);
 
   const updateOpenedItemId = (id: number) => {
     // when an opened item is clicked it will set -1 to close the item.
@@ -80,7 +81,7 @@ export default function Home() {
     <main className={styles.main}>
       <div className={styles.wrapper}>
         <div className={styles.heading}> Frequently Asked Questions </div>
-        {faqItems.map((item) => (
+        {faqs.map((item) => (
           <div key={item.id} className={styles.expandable}>
             <Expandable
               isOpen={isOpenItemId === item.id}
