@@ -5,7 +5,7 @@ import styles from "./page.module.css";
 import { useState } from "react";
 import { FaChevronCircleDown } from "react-icons/fa";
 
-const faqItems = [
+export const faqItems = [
   {
     id: 1,
     header: "How do I create an account?",
