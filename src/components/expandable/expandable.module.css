@@ -1,6 +1,5 @@
 .wrapper {
     width: 60%;
-   
 }
 
 .headerStyle {
@@ -15,7 +14,7 @@
     border-radius: 0.5rem;
     box-shadow: 0 4px 2px 0 rgba(0, 0, 0, 0.1);
     margin-top: 1rem;
-    font-size: medium;
+    font-size: 1rem;
     font-weight: 600;
 }
 
@@ -30,6 +29,73 @@
     font-size: 16px;
     height: max-content;
 }
+
+@media (max-width: 850px) {
+    .wrapper{
+        width: 80%;
+    }
+    .headerStyle {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        background-color: whitesmoke;
+        color: black;
+        height: 4rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 2px 0 rgba(0, 0, 0, 0.1);
+        margin-top: 1rem;
+        font-size: 0.8rem;
+        font-weight: 600;
+    }
+    .bodyStyle {
+        margin-top: 1rem;
+        margin-bottom: -1rem;
+        color: black;
+        padding: 2rem 1.5rem 2rem 1.5rem;
+        animation: fadeIn 500ms ease-in both;
+        border-radius: 0.5rem;
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+        font-size: 0.8rem;
+        height: max-content;
+    }
+  }
+  
+  @media (max-width: 280px) {
+    .wrapper {
+        width: 100%;
+    }
+
+    .headerStyle {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        background-color: whitesmoke;
+        color: black;
+        height: 6rem;
+        border-radius: 0.5rem;
+        padding: 0 1rem 0 1rem;
+        box-shadow: 0 4px 2px 0 rgba(0, 0, 0, 0.1);
+        margin-top: 1rem;
+        font-size: 0.5rem;
+        font-weight: 600;
+    }
+
+    .bodyStyle {
+        margin-top: 1rem;
+        margin-bottom: -1rem;
+        color: black;
+        padding: 2rem 1rem 2rem 1rem;
+        animation: fadeIn 500ms ease-in both;
+        border-radius: 0.5rem;
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+        font-size: 0.5rem;
+        height: max-content;
+    }
+}
+
+
 
 @keyframes fadeIn {
     from {
