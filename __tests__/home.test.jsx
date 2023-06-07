@@ -1,6 +1,6 @@
 import React from "react";
 import "@testing-library/jest-dom";
-import { render, fireEvent, within } from "@testing-library/react";
+import { render} from "@testing-library/react";
 import Home from "../src/app/page";
 import { faqItems } from "../src/app/page";
 

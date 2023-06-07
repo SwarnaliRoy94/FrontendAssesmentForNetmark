@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import Expandable from "../src/components/expandable/expandable";
 import { FaChevronCircleUp } from "react-icons/fa";
