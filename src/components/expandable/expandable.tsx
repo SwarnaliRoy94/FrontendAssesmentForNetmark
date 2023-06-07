@@ -2,7 +2,6 @@
 
 import { ReactNode, Children } from "react";
 import styles from "./expandable.module.css";
-import { FaChevronCircleUp } from "react-icons/fa";
 
 enum childrenType {
   HEADER = "Header",
@@ -16,7 +15,8 @@ interface ExpandableProps {
   updateItemId: () => void;
 }
 interface ExpandableIconProps {
-  icon: any;
+  openIcon: any;
+  closeIcon: any;
 }
 
 interface ExpandableHeaderProps {
@@ -34,15 +34,15 @@ const Expandable = ({ children, isOpen, updateItemId }: ExpandableProps) => {
 
   const childrenArray = Children.toArray(children);
 
-  const header = childrenArray.find(
+  const header: any = childrenArray.find(
     (child: any) => child.type.name === childrenType.HEADER
   );
 
-  const icon = childrenArray.find(
+  const icon: any = childrenArray.find(
     (child: any) => child.type.name === childrenType.ICON
   );
 
-  const body = childrenArray.find(
+  const body: any = childrenArray.find(
     (child: any) => child.type.name === childrenType.BODY
   );
 
@@ -50,9 +50,7 @@ const Expandable = ({ children, isOpen, updateItemId }: ExpandableProps) => {
     <div className={styles.wrapper}>
       <div className={styles.headerStyle} onClick={toggle}>
         <div>{header?.props.children}</div>
-        <div>
-          {isOpen ? <FaChevronCircleUp color="grey" /> : icon?.props.icon}
-        </div>
+        <div>{isOpen ? icon?.props.closeIcon : icon?.props.openIcon}</div>
       </div>
       {isOpen && (
         <div className={styles.bodyStyle}>
@@ -63,8 +61,8 @@ const Expandable = ({ children, isOpen, updateItemId }: ExpandableProps) => {
   );
 };
 
-const Icon = ({ icon }: ExpandableIconProps) => {
-  return <div>{icon}</div>;
+const Icon = ({ openIcon, closeIcon }: ExpandableIconProps) => {
+  return <div />;
 };
 Expandable.Icon = Icon;
 

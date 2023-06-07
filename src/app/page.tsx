@@ -3,7 +3,7 @@
 import Expandable from "@/components/expandable/expandable";
 import styles from "./page.module.css";
 import { useState } from "react";
-import { FaChevronCircleDown } from "react-icons/fa";
+import { FaChevronCircleDown, FaChevronCircleUp } from "react-icons/fa";
 
 export const faqItems = [
   {
@@ -87,7 +87,10 @@ export default function Home() {
               updateItemId={() => updateOpenedItemId(item.id)}
             >
               <Expandable.Header>{item.header}</Expandable.Header>
-              <Expandable.Icon icon={<FaChevronCircleDown color="grey" />} />
+              <Expandable.Icon
+                openIcon={<FaChevronCircleDown color="grey" />}
+                closeIcon={<FaChevronCircleUp color="grey" />}
+              />
               <Expandable.Body>{item.content}</Expandable.Body>
             </Expandable>
           </div>
